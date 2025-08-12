@@ -158,3 +158,4 @@ export default function EventCalendar() {
   );
 }
 
+export default EventCalendar;
