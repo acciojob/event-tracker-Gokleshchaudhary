@@ -67,3 +67,4 @@ export default function Modal({ mode, date, event, onClose, onSave, onDelete }) 
   );
 }
 
+export default Modal;
