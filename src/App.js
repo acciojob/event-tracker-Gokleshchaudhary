@@ -1,14 +1,23 @@
+import React, { useState } from "react";
+import EventCalendar from "./EventCalendar";
+import moment from "moment";
 
-import React from 'react';
-import EventCalendar from './EventCalendar';
-import Modal form './Modal';
-import styles form './styles';
+function App() {
+  const [events, setEvents] = useState([]);
 
-export default function App() {
+  const handleAddEvent = (title, start, end) => {
+    const newEvent = {
+      title,
+      start: moment(start).toDate(),
+      end: moment(end).toDate(),
+    };
+    setEvents([...events, newEvent]);
+  };
+
   return (
-    <div className="app">
-      <h1>Event Tracker Calendar</h1>
-      <EventCalendar />
+    <div style={{ padding: "20px" }}>
+      <h1>Calendar App</h1>
+      <EventCalendar events={events} onAddEvent={handleAddEvent} />
     </div>
   );
 }
