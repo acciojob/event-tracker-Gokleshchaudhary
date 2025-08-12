@@ -24,3 +24,4 @@ body { font-family: Arial, sans-serif; padding: 12px; }
 /* ensure calendar container fits */
 .rbc-calendar { font-size: 14px; }
 
+export default styles;
