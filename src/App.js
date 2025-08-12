@@ -1,6 +1,8 @@
 
 import React from 'react';
 import EventCalendar from './EventCalendar';
+import Modal form './Modal';
+import styles form './styles';
 
 export default function App() {
   return (
