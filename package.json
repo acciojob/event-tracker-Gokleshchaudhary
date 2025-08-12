@@ -1,17 +1,19 @@
 {
   "name": "event-tracker",
   "version": "1.0.0",
+  "description": "React Event Tracker Calendar",
+  "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode development --open",
-    "build": "webpack --mode production"
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "test": "jest"
   },
   "dependencies": {
     "moment": "^2.29.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-big-calendar": "^0.20.1",
-    "react-popup": "^0.9.3",
-    "cypress": "^12.16.0",
+    "react-popup": "^0.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -20,6 +22,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "html-webpack-plugin": "^4.5.0",
+    "jest": "^26.4.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
