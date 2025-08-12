@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import EventCalendar from "./EventCalendar";
-import moment from "moment";
 
-function App() {
+const App = () => {
   const [events, setEvents] = useState([]);
 
-  const handleAddEvent = (title, start, end) => {
+  const addEvent = (title, start, end) => {
+    if (!title || !start || !end) return;
     const newEvent = {
       title,
-      start: moment(start).toDate(),
-      end: moment(end).toDate(),
+      start: new Date(start),
+      end: new Date(end)
     };
     setEvents([...events, newEvent]);
   };
@@ -17,9 +17,49 @@ function App() {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Calendar App</h1>
-      <EventCalendar events={events} onAddEvent={handleAddEvent} />
+      <EventForm addEvent={addEvent} />
+      <EventCalendar events={events} />
     </div>
   );
-}
+};
+
+const EventForm = ({ addEvent }) => {
+  const [title, setTitle] = useState("");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addEvent(title, start, end);
+    setTitle("");
+    setStart("");
+    setEnd("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+      <input
+        type="text"
+        placeholder="Event Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        required
+      />
+      <input
+        type="datetime-local"
+        value={start}
+        onChange={(e) => setStart(e.target.value)}
+        required
+      />
+      <input
+        type="datetime-local"
+        value={end}
+        onChange={(e) => setEnd(e.target.value)}
+        required
+      />
+      <button type="submit">Add Event</button>
+    </form>
+  );
+};
 
 export default App;
