@@ -1,13 +1,11 @@
+import React from 'react';
+import EventCalendar from './EventCalendar';
 
-import React from "react";
-import './../styles/App.css';
-
-const App = () => {
+export default function App() {
   return (
-    <div>
-        {/* Do not remove the main div */}
+    <div className="app">
+      <h1>Event Tracker Calendar</h1>
+      <EventCalendar />
     </div>
-  )
+  );
 }
-
-export default App
