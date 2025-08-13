@@ -4,11 +4,11 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import Popup from 'reactjs-popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'reactjs-popup/dist/index.css';
-import './App.css';
+import '.components/App.css';
 import Toolbar from './components/Toolbar';
 import EventForm from './components/EventForm';
-import { useEvents } from './hooks/useEvents';
-import { eventStyleGetter } from './utils/eventUtils';
+import { useEvents } from './components/useEvents';
+import { eventStyleGetter } from './components/eventUtils';
 
 const localizer = momentLocalizer(moment);
 
