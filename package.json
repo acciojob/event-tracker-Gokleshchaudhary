@@ -1,31 +1,37 @@
 {
   "name": "event-tracker",
   "version": "1.0.0",
-  "description": "React Event Tracker Calendar",
-  "main": "index.js",
-  "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production",
-    "test": "jest"
-  },
+  "private": true,
   "dependencies": {
-    "moment": "^2.29.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "moment": "^2.22.2",
+    "react": "^17.0.2",
     "react-big-calendar": "^0.20.1",
-    "react-popup": "^0.9.3"
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.1",
+    "reactjs-popup": "^2.0.5"
   },
-  "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^4.3.0",
-    "html-webpack-plugin": "^4.5.0",
-    "jest": "^26.4.2",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
