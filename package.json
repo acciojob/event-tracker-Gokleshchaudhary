@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "moment": "2.29.4",
-    "react": "16.20.2",
+    "react": "16.13.1",
     "react-big-calendar": "0.36.1",
-    "react-dom": "16.20.2",
+    "react-dom": "16.13.1",
     "react-scripts": "4.0.3",
     "reactjs-popup": "2.0.5"
   },
