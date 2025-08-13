@@ -1,69 +1,70 @@
 import React, { useState } from 'react';
+import { Calendar } from 'react-big-calendar';
 import moment from 'moment';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { localizer, eventStyleGetter } from '../components/calendarUtils';
 import Popup from 'reactjs-popup';
+import Toolbar from '../components/Toolbar';
+import EventForm from '../components/EventForm';
+import useEvents from '../components/useEvents';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import 'reactjs-popup/dist/index.css';
-import '.components/App.css';
-import Toolbar from './components/Toolbar';
-import EventForm from './components/EventForm';
-import { useEvents } from './components/useEvents';
-import { eventStyleGetter } from './components/eventUtils';
-
-const localizer = momentLocalizer(moment);
+import '../styles/App.css';
+import '../components/calendarUtils';
 
 function App() {
   const {
     events,
+    filteredEvents,
     selectedEvent,
     selectedSlot,
     eventTitle,
     eventLocation,
+    filter,
     handleSelectSlot,
     handleSelectEvent,
     saveEvent,
     deleteEvent,
     setEventTitle,
     setEventLocation,
-    setSelectedSlot,
-    setSelectedEvent
+    setFilter,
+    closeModal
   } = useEvents();
 
-  const [filter, setFilter] = useState('all');
-
   return (
-    <div className="App">
-      <Toolbar setFilter={setFilter} />
+    <div className="app-container">
+      <Toolbar filter={filter} setFilter={setFilter} />
       
-      <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500 }}
-        selectable
-        onSelectSlot={handleSelectSlot}
-        onSelectEvent={handleSelectEvent}
-        eventPropGetter={eventStyleGetter}
-        defaultView="month"
-      />
+      <div className="calendar-wrapper">
+        <Calendar
+          localizer={localizer}
+          events={filteredEvents}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: 'calc(100vh - 100px)' }}
+          selectable
+          onSelectSlot={handleSelectSlot}
+          onSelectEvent={handleSelectEvent}
+          eventPropGetter={eventStyleGetter}
+          defaultView="month"
+          views={['month', 'week', 'day']}
+        />
+      </div>
 
-      <Popup 
-        open={selectedSlot !== null || selectedEvent !== null} 
-        onClose={() => {
-          setSelectedSlot(null);
-          setSelectedEvent(null);
-        }}
+      <Popup
+        open={selectedSlot !== null || selectedEvent !== null}
+        onClose={closeModal}
         modal
+        nested
+        closeOnDocumentClick
       >
         <EventForm
           selectedEvent={selectedEvent}
           eventTitle={eventTitle}
-          setEventTitle={setEventTitle}
           eventLocation={eventLocation}
+          setEventTitle={setEventTitle}
           setEventLocation={setEventLocation}
           saveEvent={saveEvent}
           deleteEvent={deleteEvent}
+          closeModal={closeModal}
         />
       </Popup>
     </div>
