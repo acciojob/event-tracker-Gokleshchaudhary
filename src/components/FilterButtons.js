@@ -1,19 +1,14 @@
-import React from 'react';
+import React from "react";
 
-const FilterButtons = ({ onFilterChange }) => {
+function FilterButtons({ setFilter }) {
   return (
     <div className="filter-buttons">
-      <button className="btn" onClick={() => onFilterChange('all')}>
-        All Events
-      </button>
-      <button className="btn" onClick={() => onFilterChange('past')}>
-        Past Events
-      </button>
-      <button className="btn" onClick={() => onFilterChange('upcoming')}>
-        Upcoming Events
-      </button>
+      <button onClick={() => setFilter(null)}>All</button>
+      <button onClick={() => setFilter("work")}>Work</button>
+      <button onClick={() => setFilter("personal")}>Personal</button>
+      <button onClick={() => setFilter("other")}>Other</button>
     </div>
   );
-};
+}
 
 export default FilterButtons;
